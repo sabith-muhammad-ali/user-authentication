@@ -1,0 +1,82 @@
+<% include('../layouts/header.ejs') %>
+
+<style>
+  body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f4f7f9;
+  }
+
+  h1 {
+    text-align: center;
+    color: #394867;
+  }
+
+  form {
+    width: 50%;
+    margin: 20px auto;
+  }
+
+  input, label {
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 1px solid #95a5a6;
+    border-radius: 5px;
+    font-size: 16px;
+    display: block;
+  }
+
+  input[type="radio"] {
+    margin: 8px 0;
+    vertical-align: middle;
+    display: inline-block;
+  }
+
+  input[type="submit"] {
+    background-color: #3498db;
+    color: #fff;
+    cursor: pointer;
+    padding: 12px;
+    display: block;
+    width: 100%;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+
+  input[type="submit"]:hover {
+    background-color: #2980b9;
+  }
+
+  a {
+    text-decoration: none;
+    color: #3498db;
+    margin-top: 10px;
+    display: inline-block;
+    font-size: 16px;
+  }
+
+  a:hover {
+    color: #2980b9;
+  }
+</style>
+
+<h1>Edit User</h1>
+
+<form action="" method="post">
+  <input type="name" name="name" placeholder="Enter Name" value="<%= user.name %>" required>
+  <input type="email" name="email" placeholder="Enter Email" value="<%= user.email %>" >
+  <input type="text" name="mno" placeholder="Enter Mobile" value="<%= user.mobile %>" required>
+  <input type="hidden" name="id" value="<%= user._id %>">
+  <input type="submit" value="Update User">
+</form>
+
+<a href="/admin/">Go to Dashboard</a>
+
+<% include('../layouts/footer.ejs') %>

@@ -1,0 +1,148 @@
+<% include('../layouts/header.ejs') %>
+
+<style>
+  body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f4f7f9;
+  }
+
+  h1 {
+    text-align: center;
+    color: #394867;
+    margin-bottom: 20px; /* Added margin for separation from the buttons */
+  }
+
+  .button-container {
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    margin-bottom: 20px;
+  }
+
+  a {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #3498db;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+  }
+
+  a:hover {
+    background-color: #2980b9;
+  }
+
+  form {
+    display: flex;
+    align-items: center;
+  }
+
+  input[type="text"],
+  input[type="submit"] {
+    padding: 10px;
+    border: 1px solid #95a5a6;
+    border-radius: 5px;
+    font-size: 16px;
+    margin-right: 10px;
+  }
+
+  table {
+    width: 80%;
+    margin: 20px auto;
+    border-collapse: collapse;
+  }
+
+  th, td {
+    border: 1px solid #95a5a6;
+    padding: 10px;
+    text-align: left;
+  }
+
+  th {
+    background-color: #394867;
+    color: #ececec;
+  }
+
+  img {
+    max-width: 100px;
+    max-height: 100px;
+  }
+
+  p {
+    margin: 0;
+  }
+
+  /* Additional styles for better spacing and alignment */
+  .button-container {
+    /* margin-bottom: 20px; */
+    margin-top: 140px;
+  }
+
+  table {
+    width: 100%; /* Adjusted width for better responsiveness */
+  }
+
+  a, input[type="submit"] {
+    cursor: pointer; /* Added cursor pointer for better UX */
+  }
+
+  a, input[type="submit"], input[type="text"] {
+    transition: background-color 0.3s, color 0.3s; /* Added transition for smoother hover effect */
+  }
+
+  input[type="text"]:focus,
+  input[type="submit"]:focus {
+    outline: none; /* Removed focus outline for a cleaner look */
+  }
+</style>
+
+
+<div class="button-container">
+  <a href="/admin/new-user">Add New User</a>
+  <h3 style="color: #394867;">DASHBOARD</h3>
+
+  <form>
+    <input type="text" placeholder="Search" name="search">
+    <input type="submit" value="Search">
+  </form>
+</div>
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Mobile</th>
+    <th>Image</th>
+    <th>Verified</th>
+  </tr>
+
+  <% if(users.length > 0) { %>
+    
+    <% for(let i = 0; i < users.length; i++){%>               
+      <tr>
+        <td><%= users[i].name %></td>
+        <td><%= users[i].email %></td>
+        <td><%= users[i].mobile %></td>
+        <td><img src="/userImages/<%= users[i].image %>" alt="<%= users[i].image %>"></td>
+        <td>
+          <a href="/admin/edit_user?id=<%= users[i]._id %>">Edit</a>
+          <a href="/admin/delete_user?id=<%= users[i]._id%>">Delete</a>
+        </td>
+      </tr>
+    <% } %>
+  <%} else {%>
+    <tr>
+      <td colspan="6">User Not Found</td>
+    </tr>
+  <%}%>
+</table>
+
+<a href="/admin/home">Go To Home</a>
+
+
+<% include('../layouts/footer.ejs') %>

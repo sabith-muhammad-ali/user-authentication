@@ -1,0 +1,84 @@
+<% include("../layouts/header.ejs") %>
+
+<style>
+  body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f4f7f9; 
+  }
+
+  .card {
+    position: relative;
+    background-color: #394867; 
+    color: #ececec; 
+    border-radius: 10px;
+    padding: 30px; 
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); 
+    text-align: center; 
+  }
+
+  h1 {
+    color: #3498db; 
+    margin-bottom: 20px; 
+  }
+
+  .btn-container {
+    margin-top: 20px;
+  }
+
+  .btn-link {
+    display: inline-block;
+    padding: 12px 24px; 
+    margin: 0 10px;
+    background-color: #3498db;
+    color: #fff; 
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+  }
+
+  .btn-link:hover {
+    background-color: #2980b9; 
+  }
+
+  table {
+    width: 100%;
+    margin-top: 30px;
+  }
+
+  table td {
+    padding: 15px;
+  }
+</style>
+
+<div class="card">
+  <% if (admin) { %>
+    <h1>Welcome, <%= admin.name %></h1>
+
+    <table>
+      <tr>
+        <td><img src="/userImages/<%= admin.image %>" width="120px" height="120px" alt="<%= admin.image %>"></td>
+      </tr>
+      <tr>
+        <td>Email</td>
+        <td><%= admin.email %></td>
+      </tr>
+      <tr>
+        <td>Mobile</td>
+        <td><%= admin.mobile %></td>
+      </tr>
+    </table>
+
+    <div class="btn-container">
+      <a href="/admin/dashboard" class="btn-link">Go to Dashboard</a>
+      <a href="/admin/logout" class="btn-link">Logout</a>
+    </div>
+  <% } else { %>
+    <p>No admin data available</p>
+  <% } %>
+</div>
+
+<% include('../layouts/footer.ejs') %>

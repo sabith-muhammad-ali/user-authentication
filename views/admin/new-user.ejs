@@ -1,0 +1,89 @@
+<%- include('../layouts/header.ejs') -%>
+
+<style>
+  body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f4f7f9;
+  }
+
+  h1 {
+    text-align: center;
+    color: #394867;
+  }
+
+  form {
+    width: 50%;
+    margin: 20px auto;
+  }
+
+  input {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 1px solid #95a5a6;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+
+  input[type="submit"] {
+    background-color: #3498db;
+    color: #fff;
+    cursor: pointer;
+  }
+
+  input[type="submit"]:hover {
+    background-color: #2980b9;
+  }
+
+  p {
+    color: rgb(255, 0, 0);
+    margin-bottom: 10px;
+  }
+
+  a {
+    text-decoration: none;
+    color: #3498db;
+    margin-top: 10px;
+    display: inline-block;
+  }
+
+  a:hover {
+    color: #2980b9;
+  }
+</style>
+
+<h1>Add New User</h1>
+
+<form action="" method="post" enctype="multipart/form-data">
+  <input type="text" name="name" placeholder="Enter Name" required>
+  <br><br>
+
+  <input type="email" name="email" placeholder="Enter Email">
+  <br><br>
+
+  <input type="text" name="mno" placeholder="Enter Mobile" required>
+  <br><br>
+
+  <input type="file" name="image" required>
+  <br><br>
+
+  <input type="password" name="password" placeholder="Enter Password" required>
+  <br><br>
+
+  <input type="submit" value="Add User">
+</form>
+
+<% if(typeof message !== 'undefined'){ %>
+  <p><%= message %></p>
+<% } %>
+
+<a href="/admin/dashboard">Go Back</a>
+
+<%- include('../layouts/footer.ejs') -%>
+

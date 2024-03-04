@@ -1,0 +1,68 @@
+<% include('../layouts/header.ejs') %>
+
+<style>
+  body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f4f7f9; 
+  }
+
+  form {
+    width: 50%;
+    margin: 20px auto;
+    background-color: #394867;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+
+  img {
+    display: block;
+    margin: 0 auto; 
+    border-radius: 50%;
+  }
+
+  input {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 1px solid #95a5a6;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+
+  input[type="file"] {
+    margin-bottom: 20px;
+  }
+
+  input[type="submit"] {
+    background-color: #3498db;
+    color: #fff;
+    cursor: pointer;
+  }
+
+  input[type="submit"]:hover {
+    background-color: #2980b9;
+  }
+</style>
+
+<form action="" method="post" enctype="multipart/form-data">
+  <img src="userImages/<%= user.image %>" width="100px" height="100px" alt="<%= user.image %>">
+  <br><br>
+  <input type="file" name="image">
+  <input type="hidden" name="user_id" value="<%= user._id %>">
+  <br><br>
+  <input type="text" name="name" value="<%= user.name %>" placeholder="Enter Name" required>
+  <br><br>
+  <input type="email" name="email" value="<%= user.email %>" placeholder="Enter Email">
+  <br><br>
+  <input type="text" name="mno" value="<%= user.mobile %>" placeholder="Enter Mobile" required>
+  <br><br>
+  <input type="submit" value="Update Profile">
+</form>
+
+<% include('../layouts/footer.ejs') %>

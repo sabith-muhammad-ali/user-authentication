@@ -1,0 +1,74 @@
+<% include('../layouts/header.ejs') %>
+
+<style>
+  body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f4f7f9;
+  }
+
+  .card {
+    width: 400px; 
+    position: relative;
+    background-color: #394867;
+    color: #ececec;
+    border-radius: 10px;
+    padding: 30px; 
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    text-align: center;
+  }
+
+  h1 {
+    color: #fff;
+    margin-bottom: 20px;
+  }
+
+  img {
+    max-width: 150px; 
+    max-height: 150px; 
+    margin-bottom: 20px; 
+  }
+
+  p {
+    margin: 10px 0; 
+  }
+
+  .btn-container {
+    margin-top: 30px; 
+  }
+
+  .btn-link {
+    display: inline-block;
+    padding: 12px 24px; 
+    background-color: #3498db;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    margin-right: 10px;
+  }
+
+  .btn-link:hover {
+    background-color: #2980b9;
+  }
+</style>
+
+<div class="card">
+  <h1>Welcome, <%= user.name %> </h1>
+
+  <img src="userImages/<%= user.image %>" width="150px" height="150px" alt="<%= user.image %>">
+
+  <p>Email: <%= user.email %></p>
+  <p>Mobile: <%= user.mobile %></p>
+
+  <div class="btn-container">
+    <a href="/edit?id=<%= user.id %>" class="btn-link">Edit</a>
+    <a href="/logout" class="btn-link">Logout</a>
+  </div>
+</div>
+
+<% include('../layouts/footer.ejs') %>
